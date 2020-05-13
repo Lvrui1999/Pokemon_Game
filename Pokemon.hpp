@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include "Skill.hpp"
-#include "Property.hpp"
+// #include "Property.hpp"
 using namespace std;
 
 class Pokemon{
