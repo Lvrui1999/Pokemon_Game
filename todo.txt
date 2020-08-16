@@ -1,0 +1,33 @@
+前端html
+
+pokemon类 √
+
+poke类构建{
+    四种类型{
+        攻击：高atk 低def 中heal 中speed
+        肉盾: 中atk 低def 高heal 低speed
+        防御：低atk 高def 中heal 低speed
+        速度：中偏低atk 中def 中heal 高speed
+    }
+    atk 伤害基数
+    def 伤害抵消量
+    heal 生命值 小于零就死了
+    speed 攻击间隔 隔多久打一下 设置基数单位
+    
+}
+
+战斗类构建
+{
+    先求出结果 没模拟暴击
+    前端模拟
+    战斗模拟 ———— 暴击 （MyRand) √
+    战斗模拟 ———— 时间 （TimeLine）
+    属性克制？
+    特殊攻击？与普通攻击√ 次数？ 周期？ 自选？
+    
+
+    
+}
+
+socket类构建
+
