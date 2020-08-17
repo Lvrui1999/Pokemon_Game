@@ -56,6 +56,7 @@ public:
         for(int i = 0; i < username.size(); i++){
             output << username[i] << ":" << password[i] << std::endl;
         }
+        output.close();
     }
     
 };

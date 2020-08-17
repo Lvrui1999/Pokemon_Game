@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #include <WinSock2.h>
 #pragma comment(lib,"ws2_32.lib") 
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
         
         /*创建套接字*/
         //AF_INET表示IPv4，SOCK_STREAM数据传输方式，IPPROTO_TCP传输协议;
-        SOCKET listenSocket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+        SOCKET listenSocket = socket(AF_INET,SOCK_DGRAM, 0);
         if (listenSocket == INVALID_SOCKET)
         {
             printf("Create Fail");
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
         if (listen(listenSocket, 5) == SOCKET_ERROR)
         {
             printf("Listen Fail");
-            closesocket(listenSocket);
+            closesocket(listenSocket); 
             return 0;
         }
         SOCKET revSocket;  //对应此时所建立连接的套接字的句柄
