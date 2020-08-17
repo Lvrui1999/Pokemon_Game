@@ -9,7 +9,7 @@ map<string,bool> mp;
 
 int main(){
     srand(time(NULL));
-    freopen("Pokemon.txt","w",stdout);
+    freopen("./data/Pokemon.txt","w",stdout);
     for(int i = 0; i < 100; i++){
         string name;
         int namelen = rand()%3 + 2;
