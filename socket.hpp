@@ -40,7 +40,8 @@ public:
                 std::cout << "Recv" << std::endl;
                 std::string tem1,tem2;
                 bool x = 0;
-                for(int i = 0; i < 1024; i++){
+                char mode = buffer[0];
+                for(int i = 1; i < 1024; i++){
                     if(buffer[i] == 0)break;
                     if(buffer[i] == ':'){
                         x = 1;
@@ -53,14 +54,26 @@ public:
                         tem2.push_back(buffer[i]);
                     }
                 }
-                bool val = sys.match(tem1,tem2);
-                if(val == 1){
-                    buffer[0] = '1';
+                if(mode == 'l'){
+                    bool val = sys.match(tem1,tem2);
+                    if(val == 1){
+                        buffer[0] = '1';
+                    }
+                    else{
+                        buffer[0] = '0';
+                    }
+                    sendto(listenSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&from, fromlen);
                 }
                 else{
-                    buffer[0] = '0';
+                    bool val = sys.regist(tem1,tem2);
+                    if(val == 1){
+                        buffer[0] = '1';
+                    }
+                    else{
+                        buffer[0] = '0';
+                    }
+                    sendto(listenSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&from, fromlen);
                 }
-                sendto(listenSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&from, fromlen);
             } 
         }
         return;
@@ -93,8 +106,20 @@ public:
     }
     bool login(std::string a, std::string b){
         std::string s = a + ':' + b;
-        char buffer[1024] = {0};
-        for(int i = 0; i < s.size(); i++){
+        char buffer[1024] = {'l'};
+        for(int i = 1; i < s.size(); i++){
+            buffer[i] = s[i];
+        }
+        sendto(clientSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&addrConServer, slen);
+        recvfrom(clientSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&addrConServer, &slen);
+        if(buffer[0] == '0')return 0;
+        else return 1;
+        return 0;
+    }
+    bool regist(std::string a, std::string b){
+        std::string s = a + ':' + b;
+        char buffer[1024] = {'r'};
+        for(int i = 1; i < s.size(); i++){
             buffer[i] = s[i];
         }
         sendto(clientSocket, buffer, sizeof(buffer), 0, (struct sockaddr*)&addrConServer, slen);
