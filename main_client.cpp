@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 #include "socket.hpp"
 #include "poke.hpp"
+#include "user.hpp"
 using namespace std;
 
 int main(){
     client c = client();
-    vector <Poke> v;
-    c.init();
+    user u = user();
     while(1){
         cout << "Login(1) or Register(2)" << endl;
         int t;
@@ -40,7 +40,7 @@ int main(){
             string pword;
             cin >> pword; 
             c.regist(uname,pword);
-            v = init();
+            u.init();
             break;
         }
         else{

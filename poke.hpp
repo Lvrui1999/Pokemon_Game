@@ -12,10 +12,7 @@ private:
     int heal;
     int attinterval;
 public:
-    Poke(int type, string name, int atk, int def, int heal, int at):type(type),name(name),atk(atk),def(def),heal(heal),attinterval(at){
-        level = 1;
-        exp = 0;
-    }
+    Poke(int type, string name, int atk, int def, int heal, int at,int level = 1, int exp = 0):type(type),name(name),atk(atk),def(def),heal(heal),attinterval(at),level(level),exp(exp){}
     void leveladp(int expget){
         if(level == 15){
             return;
@@ -76,5 +73,25 @@ public:
     friend ostream &operator <<(ostream &output, const Poke x){
         output << x.atk << " " << x.def << " "  << x.level << " " << x.exp << " " << x.heal << " " << x.type;
         return output;
+    }
+    std::string trans(int x){
+        std::stringstream ss;
+        ss << x;
+        std::string ans;
+        ss >> ans;
+        return ans;
+    }
+    std::string get_string(){
+        string tem;
+        tem += tran(type) << ",";
+        tem += name << ",";
+        tem += trans(atk) << ",";
+        tem += trans(def) << ",";
+        tem += trans(heal) << ",";
+        tem += trans(attinterval) << ",";
+        tem += trans(level) << ",";
+        tem += trans(exp) << ";";
+        return tem;
+        // tem += trans(atk) << ",";
     }
 };

@@ -2,7 +2,7 @@
 #include "poke.hpp"
 class Pokemon{
 private:
-    string name;
+    std::string name;
     int type;
     int atk;
     int def;
