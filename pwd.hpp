@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
 
 class Pwd{
 private:
@@ -30,6 +34,9 @@ public:
         }
         input.close();
     }
+    std::vector <std::string> all(){
+        return username;
+    }
     bool match(std::string uname, std::string pword){
         for(int i = 0; i < username.size(); i++){
             if(username[i] == uname){
@@ -39,10 +46,12 @@ public:
                 return false;
             }
         }
+        return false;
     }
     bool regist(std::string uname, std::string pword){
         for(int i = 0; i < username.size(); i++){
             if(username[i] == uname){
+                std::cout << i << std::endl;
                 return 0;
             }
         }

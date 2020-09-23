@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Poke{
@@ -12,7 +13,28 @@ private:
     int heal;
     int attinterval;
 public:
+    Poke(){}
     Poke(int type, string name, int atk, int def, int heal, int at,int level = 1, int exp = 0):type(type),name(name),atk(atk),def(def),heal(heal),attinterval(at),level(level),exp(exp){}
+    Poke(string s){
+        int cnt = 1;
+        string tem[20];
+        for(auto c : s){
+            if(c == ','){
+                cnt++;
+            }
+            else{
+                tem[cnt] += c;
+            }
+        }
+        type = retrans(tem[1]);
+        name = tem[2];
+        atk = retrans(tem[3]);
+        def = retrans(tem[4]);
+        heal = retrans(tem[5]);
+        attinterval = retrans(tem[6]);
+        level = retrans(tem[7]);
+        exp = retrans(tem[8]);
+    }
     void leveladp(int expget){
         if(level == 15){
             return;
@@ -27,6 +49,13 @@ public:
             update();
             return;
         }
+    }
+    int retrans(std::string s){
+        std::stringstream ss;
+        ss << s;
+        int ans;
+        ss >> ans;
+        return ans;
     }
     void update(){
         // 各个精灵差异
@@ -83,7 +112,7 @@ public:
     }
     std::string get_string(){
         string tem;
-        tem += tran(type) << ",";
+        tem += trans(type) << ",";
         tem += name << ",";
         tem += trans(atk) << ",";
         tem += trans(def) << ",";
@@ -94,4 +123,5 @@ public:
         return tem;
         // tem += trans(atk) << ",";
     }
+    
 };

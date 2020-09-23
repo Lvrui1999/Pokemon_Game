@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 #include "pokemon.hpp"
 #include "pokemondict.hpp"
 
@@ -21,14 +22,34 @@ public:
     }
     std::string get_string(){
         std::string tem;
-        tem += username + ":";
+        tem = username + ":";
         for(auto p : list){
             tem += p.get_string();
         }
-        return tem;
+        return tem;  
     }
-    void in_string(std::string){
-        
+    void in_string(std::string data){
+        std::string name;
+        int now = 0;
+        int l = data.size();
+        for(int i = 0; i < l; i++){
+            if(data[i] == ':'){
+                now = i + 1;
+                break;
+            }
+            name += data[i];
+        }
+        make_name(name);
+        name.clear();
+        for(int i = now; i < l; i++){
+            if(data[i] == ';'){
+                list.push_back(Poke(name));
+                name.clear();
+            }
+            else{
+                name.append(data[i]);
+            }
+        }
     }
 };
 

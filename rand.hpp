@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 class MyRand{
 private:
     std::vector <bool> randArray[11];

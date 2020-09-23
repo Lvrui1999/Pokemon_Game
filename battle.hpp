@@ -6,6 +6,7 @@ private:
     Poke b;
     MyRand mr; 
 public:
+    Battle(){}
     Battle(Poke aa, Poke bb){
         a = aa;
         b = bb;

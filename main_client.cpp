@@ -20,7 +20,7 @@ int main(){
                 string pword;
                 cin >> pword;
                 if(c.login(uname,pword)){
-                    v = c.getpoke(uname); //Todo!!!!!!!!!
+                    u.in_string(c.getdata(uname));
                     break;
                 }
                 else{
@@ -46,5 +46,10 @@ int main(){
         else{
             system("cls");
         } 
-    } 
+    }
+    while(1){
+        //Choose Battle
+        //Or Save
+    
+    }
 }
